@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聊天賺錢（以10萬為主可領錢）</title>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background-color: #f7fafc; 
+            margin: 0; 
+            padding: 15px; 
+            color: #2d3748; 
+        }
+        .container { 
+            max-width: 500px; 
+            margin: 0 auto; 
+        }
+        h2 { 
+            text-align: center; 
+            color: #2b6cb0; 
+            margin-bottom: 5px; 
+            font-size: 1.4rem; 
+        }
+        .hint { 
+            text-align: center; 
+            color: #718096; 
+            font-size: 0.85rem; 
+            margin-bottom: 20px; 
+        }
+        .card { 
+            background: white; 
+            border-radius: 12px; 
+            padding: 16px; 
+            margin-bottom: 15px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+        }
+        .card-title { 
+            font-size: 1.1rem; 
+            font-weight: bold; 
+            margin-bottom: 12px; 
+            color: #2b6cb0; 
+            border-left: 4px solid #2b6cb0; 
+            padding-left: 8px; 
+        }
+        .input-group { 
+            display: flex; 
+            align-items: center; 
+            margin-bottom: 10px; 
+        }
+        label { 
+            width: 70px; 
+            font-size: 0.95rem; 
+        }
+        input { 
+            flex: 1; 
+            padding: 8px 12px; 
+            border: 1px solid #cbd5e0; 
+            border-radius: 6px; 
+            font-size: 1rem; 
+        }
+        .result-group { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            background: #ebf8ff; 
+            padding: 10px 12px; 
+            border-radius: 6px; 
+            margin-top: 8px; 
+        }
+        .result-label { 
+            font-weight: bold; 
+            color: #2b6cb0; 
+        }
+        .result-value { 
+            font-size: 1.2rem; 
+            font-weight: bold; 
+            color: #e53e3e; 
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>聊天賺錢（以10萬為主可領錢）</h2>
+    <div class="hint">✨ 數字輸入後會自動即時存檔，下次打開自動載入</div>
+
+    <div class="card">
+        <div class="card-title">FaceBar</div>
+        <div class="input-group">
+            <label for="facebar_input">鑽石：</label>
+            <input type="number" id="facebar_input" placeholder="請輸入鑽石數量" oninput="calcAndAutoSave('facebar_input', 'facebar_res')">
+        </div>
+        <div class="result-group">
+            <span class="result-label">答案：</span>
+            <span class="result-value" id="facebar_res">0</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">FaceChat</div>
+        <div class="input-group">
+            <label for="facechat_input">鑽石：</label>
+            <input type="number" id="facechat_input" placeholder="請輸入鑽石數量" oninput="calcAndAutoSave('facechat_input', 'facechat_res')">
+        </div>
+        <div class="result-group">
+            <span class="result-label">答案：</span>
+            <span class="result-value" id="facechat_res">0</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">JD</div>
+        <div class="input-group">
+            <label for="jd_input">鑽石：</label>
+            <input type="number" id="jd_input" placeholder="請輸入鑽石數量" oninput="calcAndAutoSave('jd_input', 'jd_res')">
+        </div>
+        <div class="result-group">
+            <span class="result-label">答案：</span>
+            <span class="result-value" id="jd_res">0</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">BeeBar</div>
+        <div class="input-group">
+            <label for="beebar_input">鑽石：</label>
+            <input type="number" id="beebar_input" placeholder="請輸入鑽石數量" oninput="calcAndAutoSave('beebar_input', 'beebar_res')">
+        </div>
+        <div class="result-group">
+            <span class="result-label">答案：</span>
+            <span class="result-value" id="beebar_res">0</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Cheers</div>
+        <div class="input-group">
+            <label for="cheers_input">鑽石：</label>
+            <input type="number" id="cheers_input" placeholder="請輸入鑽石數量" oninput="calcAndAutoSave('cheers_input', 'cheers_res')">
+        </div>
+        <div class="result-group">
+            <span class="result-label">答案：</span>
+            <span class="result-value" id="cheers_res">0</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">SofaTalk</div>
+        <div class="input-group">
+            <label for="sofatalk_input">鑽石：</label>
+            <input type="number" id="sofatalk_input" placeholder="請輸入鑽石數量" oninput="calcAndAutoSave('sofatalk_input', 'sofatalk_res')">
+        </div>
+        <div class="result-group">
+            <span class="result-label">答案：</span>
+            <span class="result-value" id="sofatalk_res">0</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 計算公式：100000 - 輸入的鑽石，並自動即時存檔
+    function calcAndAutoSave(inputId, resId) {
+        const val = parseFloat(document.getElementById(inputId).value) || 0;
+        const res = 100000 - val;
+        document.getElementById(resId).innerText = res;
+
+        // 背景自動即時存檔
+        const data = {
+            facebar: document.getElementById('facebar_input').value,
+            facechat: document.getElementById('facechat_input').value,
+            jd: document.getElementById('jd_input').value,
+            beebar: document.getElementById('beebar_input').value,
+            cheers: document.getElementById('cheers_input').value,
+            sofatalk: document.getElementById('sofatalk_input').value
+        };
+        localStorage.setItem('chat_earn_100k_series_v3', JSON.stringify(data));
+    }
+
+    // 網頁開啟時，自動讀取上次手機留下的數字
+    window.onload = function() {
+        const savedData = localStorage.getItem('chat_earn_100k_series_v3');
+        if (savedData) {
+            const data = JSON.parse(savedData);
+            document.getElementById('facebar_input').value = data.facebar || '';
+            document.getElementById('facechat_input').value = data.facechat || '';
+            document.getElementById('jd_input').value = data.jd || '';
+            document.getElementById('beebar_input').value = data.beebar || '';
+            document.getElementById('cheers_input').value = data.cheers || '';
+            document.getElementById('sofatalk_input').value = data.sofatalk || '';
+            
+            // 自動重新跑一次計算顯示
+            document.getElementById('facebar_res').innerText = 100000 - (parseFloat(data.facebar) || 0);
+            document.getElementById('facechat_res').innerText = 100000 - (parseFloat(data.facechat) || 0);
+            document.getElementById('jd_res').innerText = 100000 - (parseFloat(data.jd) || 0);
+            document.getElementById('beebar_res').innerText = 100000 - (parseFloat(data.beebar) || 0);
+            document.getElementById('cheers_res').innerText = 100000 - (parseFloat(data.cheers) || 0);
+            document.getElementById('sofatalk_res').innerText = 100000 - (parseFloat(data.sofatalk) || 0);
+        }
+    }
+</script>
+
+</body>
+</html>
